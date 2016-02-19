@@ -1,13 +1,13 @@
 # CSCI3308_Project
 
 Who:
-Cameron Thompson
-Jiahao Cao
-D'Vreaux Fontaine
-Ben Droste
-geli9252?
+Cameron Thompson, 
+Jiahao Cao, 
+D'Vreaux Fontaine, 
+Ben Droste, 
+Gengyu Liu
 
-Title: Online Homework Tracker
+Title: <em>Online Homework Tracker</em>
 
 Description: This software will help college students centeralize all online homework in one convient place.
 The user will be able to indicate which website they wish the program to check and the program will go out and 
@@ -32,10 +32,7 @@ User Requirments:
 Functional Requirments:
 - As a User, I want to have a secure account so that the program can repeatably search websites I specify
 
-
-
-Tracking software: Trello
-
 Non-Functional:
 - As a User, I want all the assignment data to be accurate so I dont miss important assignments.
 
+Tracking software: <a href="https://trello.com/b/HFM0998m/csci3308-project" target="_blank">Link to Trello</a>
