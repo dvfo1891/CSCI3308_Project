@@ -1,0 +1,53 @@
+{% extends 'tables/base.html' %}
+
+{% block content %}
+<section id="main">
+  <form method="get">
+      <input type="search" name="search" placeholder="Search" />
+      <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+  </form>
+</section>
+
+<section id="readme">
+<h2># CSCI3308_Project</h2>
+
+<p>
+Who:
+Cameron Thompson,
+Jiahao Cao,
+D'Vreaux Fontaine,
+Ben Droste,
+Gengyu Liu
+</p>
+
+<h3>Title: <em>Online Homework Tracker</em></h3>
+
+<p>Description: This software will help college students centeralize all online homework in one convient place.
+The user will be able to indicate which website they wish the program to check and the program will go out and
+parse all the assignments and due dates. The program will compile all this information in a convient way for
+the user.<br><br></p>
+
+<p>Vison Statement: To provide a centralized location for college student to keep track of upcomming online assignments.<br><br></p>
+
+<p>Motivation: CU Boulder's departments like to use a varity of website for assignments. This can cause students to
+have to check a hand full of site repeatably to keep up to date on upcomming assignments. This is a tedious process
+and hopefully this program will simplify this process.<br><br></p>
+
+<p>Risks: Every site uses diffrent methods of displaying assignment information that might become a problem for out
+program to parse.<br><br></p>
+
+<p>Mitigation stategy: To combat this problem we will have the possibility to manually input data when our program
+is unable to parse the data.<br><br></p>
+
+<p>User Requirments:</p>
+<p>- As a User, I want to easily be able to view assignment data so that I dont have to check ever site by hand.<br><br></p>
+
+<p>Functional Requirments:</p>
+<p>- As a User, I want to have a secure account so that the program can repeatably search websites I specify.<br><br></p>
+
+<p>Non-Functional:<p>
+<p>- As a User, I want all the assignment data to be accurate so I dont miss important assignments.<br><br></p>
+
+<p>Tracking software: <a href="https://trello.com/b/HFM0998m/csci3308-project" target="_blank">Link to Trello</a></p>
+</section>
+{% endblock %}

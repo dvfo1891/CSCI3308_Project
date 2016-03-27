@@ -1,0 +1,196 @@
+a {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input[type="search"] {
+  border: 0;
+}
+button[type="submit"] {
+  border: 0;
+  background-color: white;
+}
+
+#container {
+  width: 1200px;
+  margin: auto;
+}
+
+/* topbar login dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-items.topbar {
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  background-color: white;
+  border: 1px solid #888888;
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 2px 2px 2px #aaaaaa;
+  width: 150%;
+  display: none;
+  z-index: 1;
+}
+
+.dropdown-items.topbar a {
+  text-align: center;
+  width: 100%;
+}
+
+.dropdown:hover .dropdown-items {
+  display: block;
+}
+
+header {
+  background-color: #eeeeee;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 20px;
+}
+
+header h1{
+  font-size: 18px;
+  float: left;
+  padding: 10px 0 10px 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+header ul.nav {
+  height: inherit;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+header ul.nav li {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  float: right;
+  list-style: none;
+}
+
+header ul.nav li a {
+  font-size: 15px;
+  height: 100%;
+  padding: 10px;
+  display: inline-block;
+}
+
+header ul.nav li form {
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: white;
+  padding-left: 5px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+header ul.nav li a:hover {
+  background-color: #666666;
+  text-decoration: none;
+  color: white;
+}
+
+aside {
+  padding: 20px;
+  border: 2px solid #eeeeee;
+  border-radius: 10px;
+  width: 220px;
+  float: left;
+}
+
+aside ul {
+  padding-left: 0;
+}
+
+aside li {
+  list-style:circle inside;
+}
+
+section.dashboard {
+  float: right;
+  background-color: #dddddd;
+  width: 900px;
+  height: 1000px;
+}
+
+#main {
+  width: 100%;
+  max-width: 1920px;
+  margin: auto;
+  position: relative;
+  height: 600px;
+}
+
+#main form {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  width: 350px;
+  margin: 0 auto;
+}
+
+#main form {
+  position: relative;
+  border: 2px solid #aaaaaa;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#main form input[type="search"] {
+  border: 0;
+  width: 300px;
+  height: 50px;
+  padding: 10px;
+}
+
+#main form button[type="submit"] {
+  position: absolute;
+  right: 0;
+  background-color: inherit;
+  border: 0;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#readme {
+  font-family: monospace;
+  background-color: #f9f9f9;
+  padding: 20px 15%;
+  border: 1px dashed #dddddd;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  background-color: #eeeeee;
+  margin-top: 100px;
+  border-top: 1px solid #cccccc;
+  text-align: center;
+}
+
+footer a {
+  text-transform: uppercase;
+  display: inline-block;
+  color: #666666;
+  margin-top: 15px;
+  padding: 0 20px 0;
+}
+
+footer a:first {
+  padding: 0;
+}
