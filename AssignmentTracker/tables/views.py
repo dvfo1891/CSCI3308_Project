@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from .models import User, Course, Assignments
 from .forms import SignUpForm
 
@@ -13,7 +14,7 @@ def signups(request):
     if request.method == 'POST':
 		form = SignUpForm(request.POST)
 		form.save(commit=True)
-		return render(request, 'tables/signups.html', {'form' : form})
+		return redirect('/dashboard')
     else:
 		form = SignUpForm()
 		return render(request, 'tables/signups.html', {'form' : form})
