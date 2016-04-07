@@ -1,4 +1,4 @@
-Who: Cameron Thompson, Jiahao Cao, D'Vreaux Fontaine, Ben Droste, Gengyu Liu
+Who: Cameron Thompson, Jiahao Cao, DVreaux Fontaine, Ben Droste, Gengyu Liu
 
 Title: Online Homework Tracker
 
