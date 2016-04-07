@@ -8,6 +8,10 @@ a:hover {
   text-decoration: none;
 }
 
+a[type="login_error"] {
+  color: red;
+}
+
 input[type="search"] {
   border: 0;
 }

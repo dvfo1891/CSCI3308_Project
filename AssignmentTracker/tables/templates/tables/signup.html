@@ -1,0 +1,20 @@
+{% extends 'tables/base.html' %}
+
+{% block content %}
+	<html>
+		<head>
+		
+		</head>
+		
+		<body>
+			<h1>Join Now</h1>
+			<form method='POST' action = '{{ action }}'>
+				{% csrf_token %}
+				{{form.as_p}}
+				
+				<input type='submit' value="Save">
+			</form>
+		</body>
+		
+	</html>
+{% endblock %}

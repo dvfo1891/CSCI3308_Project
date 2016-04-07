@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .models import User, Course, Assignments
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from .models import Course, Assignments
 from .forms import SignUpForm
 
 # Create your views here.
@@ -10,14 +12,20 @@ def test_main(request):
     assigns = Assignments.objects.all()
     return render(request, 'tables/main.html', {'user': user, 'course': course, 'assigns': assigns})
 
-def signups(request):
+def signup(request):
     if request.method == 'POST':
 		form = SignUpForm(request.POST)
-		form.save(commit=True)
-		return redirect('/dashboard')
+		if User.objects.filter(username=request.POST['username']).exists():
+			return redirect('/signup_error.html')
+		else:
+			user = form.save(commit=False)
+			user.backend = 'django.contrib.auth.backends.ModelBackend'
+			user.save()
+			login(request,user)
+			return redirect('/dashboard')
     else:
 		form = SignUpForm()
-		return render(request, 'tables/signups.html', {'form' : form})
+		return render(request, 'tables/signup.html', {'form' : form})
 
 def dashboard(request):
     return render(request, 'tables/dashboard.html')
