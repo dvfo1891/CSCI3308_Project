@@ -28,6 +28,7 @@ OK
 Press return to continue
 
 
+_____
 UAT
 
 Use Case ID = UC-01
@@ -49,7 +50,7 @@ Test Pass = Pass /Fail
 Notes = 
 
 
-
+_________
 Use Case ID = UC-02
 
 Use Case Name = No duplicate users
