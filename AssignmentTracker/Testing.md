@@ -41,5 +41,13 @@ Frequency of Use = Every time we need to access the database
 Test Pass = Pass /Fail
 Notes = 
 
+Use Case ID = UC-02
+Use Case Name = No duplicate users
+Description = When signing up it should prevent duplications of usernames and redirect to signup_error.html
 
-
+User = Developers
+Preconditions =
+Postconditions =
+Frequency of Use = Every time a new user joins
+Test Pass = Pass /Fail
+Notes =
