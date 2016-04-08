@@ -16,7 +16,7 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if User.objects.filter(username=request.POST['username']).exists():
-            return redirect('/signup_error.html')
+            return render(request, 'tables/signups_error.html', {'form' : form})
         else:
             user = form.save(commit=False)
             user.backend = 'django.contrib.auth.backends.ModelBackend'
