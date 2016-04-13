@@ -14,18 +14,18 @@ def test_main(request):
 
 def signup(request):
     if request.method == 'POST':
-		form = SignUpForm(request.POST)
-		if User.objects.filter(username=request.POST['username']).exists():
-			return redirect('/signup_error.html')
-		else:
-			user = form.save(commit=False)
-			user.backend = 'django.contrib.auth.backends.ModelBackend'
-			user.save()
-			login(request,user)
-			return redirect('/dashboard')
+        form = SignUpForm(request.POST)
+        if User.objects.filter(username=request.POST['username']).exists():
+            return render(request, 'tables/signups_error.html', {'form' : form})
+        else:
+            user = form.save(commit=False)
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            user.save()
+            login(request,user)
+            return redirect('/dashboard')
     else:
-		form = SignUpForm()
-		return render(request, 'tables/signup.html', {'form' : form})
+        form = SignUpForm()
+        return render(request, 'tables/signup.html', {'form' : form})
 
 def dashboard(request):
     return render(request, 'tables/dashboard.html')

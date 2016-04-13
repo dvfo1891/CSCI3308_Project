@@ -28,28 +28,45 @@ OK
 Press return to continue
 
 
+_____
 UAT
 
 Use Case ID = UC-01
+
 Use Case Name = Python Database calls
+
 Description = Python call that can insert, select, delete items from sqlite database
 
 Users = Developers
+
 Preconditions = 
+
 Postconditions = 
+
 Frequency of Use = Every time we need to access the database
+
 Test Pass = Pass /Fail
+
 Notes = 
 
+
+_________
 Use Case ID = UC-02
+
 Use Case Name = No duplicate users
+
 Description = When signing up it should prevent duplications of usernames and redirect to signup_error.html
 
 User = Developers
+
 Preconditions =
+
 Postconditions =
+
 Frequency of Use = Every time a new user joins
+
 Test Pass = Pass /Fail
+
 Notes =
 
 Use Case ID = UC-03
