@@ -29,7 +29,7 @@ def signup(request):
         return render(request, 'tables/signup.html', {'form' : form})
 
 def login(request):
-    return HttpResponse('login page')
+    return render(request, 'tables/login.html')
 
 def search(request):
     if request.method == 'GET':
@@ -43,16 +43,16 @@ def search(request):
             return HttpResponse("search page.")
 
 def notif(request):
-    return HttpResponse("notification page")    
+    return render(request, 'tables/notif.html')
 
 def dashboard(request):
     return render(request, 'tables/dashboard.html')
 
 def about(request):
-    return HttpResponse("about page")
+    return render(request, 'tables/about.html')
 
 def helpcenter(request):
-    return HttpResponse("help center page")
+    return render(request, 'tables/help.html')
 
 def contact(request):
-    return HttpResponse("contact page")
+    return render(request, 'tables/contact.html')
