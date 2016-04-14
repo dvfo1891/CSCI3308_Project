@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.utils import timezone
 
 class Course(models.Model):
     username = models.CharField(max_length=18)
@@ -20,3 +21,10 @@ class Assignments(models.Model):
 
     def __str__(self):
         return self.assignment
+
+class Notification(models.Model):
+    user_from = models.ForeignKey('auth.User', related_name='user_from')
+    user_to = models.ForeignKey('auth.User', related_name='user_to')
+    title = models.CharField(max_length=64)
+    text = models.CharField(max_length=1024)
+    time = models.DateTimeField(default=timezone.now())
