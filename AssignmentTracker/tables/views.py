@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .models import Course, Assignments
@@ -23,12 +23,12 @@ def signup(request):
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             user.save()
             login(request,user)
-            return redirect('/dashboard')
+            return redirect(reverse('dashboard'))
     else:
         form = SignUpForm()
         return render(request, 'tables/signup.html', {'form' : form})
 
-def login(request):
+def log_in(request):
     return render(request, 'tables/login.html')
 
 def search(request):
