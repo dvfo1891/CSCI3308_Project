@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .models import Course, Assignments
 from .forms import SignUpForm
+from django.http import HttpResponse
 
 # Create your views here.
 def test_main(request):
@@ -27,6 +28,31 @@ def signup(request):
         form = SignUpForm()
         return render(request, 'tables/signup.html', {'form' : form})
 
+def login(request):
+    return HttpResponse('login page')
+
+def search(request):
+    if request.method == 'GET':
+        try:
+            keyword = request.GET['keyword']
+            if keyword:
+                return HttpResponse("searching: %s." % request.GET['keyword'])
+            else:
+                return HttpResponse("No search keyword provided.")
+        except:
+            return HttpResponse("search page.")
+
+def notif(request):
+    return HttpResponse("notification page")    
+
 def dashboard(request):
     return render(request, 'tables/dashboard.html')
 
+def about(request):
+    return HttpResponse("about page")
+
+def helpcenter(request):
+    return HttpResponse("help center page")
+
+def contact(request):
+    return HttpResponse("contact page")

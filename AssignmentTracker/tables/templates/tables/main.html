@@ -2,8 +2,8 @@
 
 {% block content %}
 <section id="main">
-  <form method="get">
-      <input type="search" name="search" placeholder="Search" />
+  <form action="{% url 'search' %}" method="get">
+      <input type="search" name="keyword" placeholder="Search" />
       <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
   </form>
 </section>
