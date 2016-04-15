@@ -6,9 +6,9 @@
   <hr>
   <ul>
     <caption>Courses</caption>
-    <li>CSCI3308</li>
-    <li>CSCI3302</li>
-    <li>MATH4560</li>
+    {% for course in user.course_set.all %}
+        <li>{{ course.course }}</li>
+    {% endfor %}
   </ul>
   <hr>
   <ul>

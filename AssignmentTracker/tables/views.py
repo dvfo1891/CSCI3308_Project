@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate
 from .models import Course, Assignments
 from .forms import SignUpForm
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def test_main(request):
@@ -45,6 +46,7 @@ def search(request):
 def notif(request):
     return render(request, 'tables/notif.html')
 
+#@login_required
 def dashboard(request):
     return render(request, 'tables/dashboard.html')
 
