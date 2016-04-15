@@ -8,10 +8,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def test_main(request):
-    user = User.objects.all()
+    users = User.objects.all()
     course = Course.objects.all()
     assigns = Assignments.objects.all()
-    return render(request, 'tables/main.html', {'user': user, 'course': course, 'assigns': assigns})
+    return render(request, 'tables/main.html', {'users': users, 'course': course, 'assigns': assigns})
 
 def signup(request):
     if request.method == 'POST':
