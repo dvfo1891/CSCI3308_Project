@@ -6,6 +6,7 @@ from .models import Course, Assignments
 from .forms import SignUpForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 # Create your views here.
 def test_main(request):
@@ -34,19 +35,15 @@ def log_in(request):
 
 def search(request):
     if request.method == 'GET':
-        try:
-            keyword = request.GET['keyword']
-            if keyword:
-                return HttpResponse("searching: %s." % request.GET['keyword'])
-            else:
-                return HttpResponse("No search keyword provided.")
-        except:
-            return HttpResponse("search page.")
+        keyword = request.GET['keyword']
+        return render(request, 'tables/search.html', {'keyword': keyword})
+    else:
+        return render(request, 'tables/search.html')
 
 def notif(request):
     return render(request, 'tables/notif.html')
 
-#@login_required
+@login_required
 def dashboard(request):
     return render(request, 'tables/dashboard.html')
 
@@ -58,3 +55,6 @@ def helpcenter(request):
 
 def contact(request):
     return render(request, 'tables/contact.html')
+
+def profile(request):
+    return render(request, 'tables/profile.html')

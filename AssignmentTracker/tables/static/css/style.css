@@ -68,6 +68,12 @@ header h1{
   font-weight: bold;
 }
 
+#dashboard{
+  font-size: 12px;
+  float: left;
+  padding: 13px 0 0 15px;
+}
+
 header ul.nav {
   height: inherit;
   float: right;
@@ -91,7 +97,7 @@ header ul.nav li a {
 }
 
 header ul.nav li form {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-right: 10px;
   background-color: white;
   padding-left: 5px;
