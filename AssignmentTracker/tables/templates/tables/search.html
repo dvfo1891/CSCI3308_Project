@@ -2,10 +2,11 @@
 
 {% block content %}
 <h2>Search page</h2>
-{% if keyword %}
-    <p>You're searching {{ keyword }}</p>
-{% else %}
-    <p>No searching keyword provided</p>
-{% endif %}
+{% for course in courses %}
+    <div>
+        <h3>{{ course.course }}</h3>
+        <a href="{{ course.url }}">{{ course.url }}</a>
+    </div>
+{% endfor %}
 
 {% endblock %}

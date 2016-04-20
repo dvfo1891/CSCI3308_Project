@@ -7,6 +7,7 @@ from .forms import SignUpForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from itertools import chain
 
 # Create your views here.
 def test_main(request):
@@ -30,16 +31,17 @@ def signup(request):
         form = SignUpForm()
         return render(request, 'tables/signup.html', {'form' : form})
 
-def log_in(request):
-    return render(request, 'tables/login.html')
 
 def search(request):
-    if request.method == 'GET':
-        keyword = request.GET['keyword']
-        return render(request, 'tables/search.html', {'keyword': keyword})
+    keyword = request.GET['keyword']
+    if keyword:
+        courses = Course.objects.filter(course__icontains=keyword)
+        courses = chain(courses, Course.objects.all().exclude(course__icontains=keyword).order_by('course'))
     else:
-        return render(request, 'tables/search.html')
+        courses = Course.objects.all().order_by('course')
+    return render(request, 'tables/search.html', {'courses': courses})
 
+@login_required
 def notif(request):
     return render(request, 'tables/notif.html')
 
@@ -56,5 +58,6 @@ def helpcenter(request):
 def contact(request):
     return render(request, 'tables/contact.html')
 
+@login_required
 def profile(request):
     return render(request, 'tables/profile.html')
