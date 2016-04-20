@@ -16,7 +16,7 @@
       <ul class="topbar nav">
         {% if not user.is_authenticated %}
         <li class="topbar dropdown">
-          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'django.contrib.auth.views.login' %}">Login</a>
           <div class="topbar dropdown-items">
               <a href = "{% url 'signup' %}">Sign up</a>
               <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">Login</a>
