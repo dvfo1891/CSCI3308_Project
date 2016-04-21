@@ -1,32 +1,43 @@
 import sys
 import sqlite3
 import time
-import sqlite_call.py
-import json
-import dateutil.parser as dparser
-import date
+from sqlite_call import *
+from json import *
+import datetime
+import parser
 
-def algorithm(user):
-	user_courses = db_select(course, 'where  username = user')
-	assignment_list = db_select('user_courses, assignments', 'where user_courses.course =assignment.course')
+def algorithm(user_id):
+	# waiting on sqlite_call to work. Can't test otherwise
 	conn = sqlite3.connect('../db.sqlite3')
 	c = conn.cursor()
+	c.execute( 'select assignment, difficulty, end from tables_assignments where course_id in ( select course_id from tables_course where username_id=%d )' % (user_id))
+	#c.execute('SELECT * FROM tables_course WHERE username_id=?', user_id)
+	#user_courses = c.fetchall()
+	#conn.close()
+	#conn = sqlite3.connect('../db.sqlite3')
+	#c = conn.cursor()
+	#query = "select * from tables_course, tables_assignments where tables_course.id =tables_assignments.course_id"
+	#c.execute(query)
+	#assignment_list = c.fetchall()
+	#conn.close()
+	#conn = sqlite3.connect('../db.sqlite3')
+	#c = conn.cursor()
 
-	query = "select assignment, difficulty, end from assignment_list order by end, difficulty"
+	#query = "select assignment, difficulty, end from assignment_list order by end, difficulty"
 
-	#call stored Procedure
-	c.execute(query)
+	##call stored Procedure
+	#c.execute(query)
 	r = c.fetchall()
 	conn.close()
 	finished_plan = scheduler(r)
-	return(JSONEncoder().encoder(finished_plan))
+	return(JSONEncoder().encode(finished_plan))
 def scheduler(courses):
 	order = 0
 	place = 0
 	for rows in courses:
 		# sets order to the first item in the table
 		if order == 0:
-			order = row
+			order = rows
 			place = place +1 
 		# Projects take priority over all other assignments, followed by papers
 		# Will overwrite end date base don assignment up to a point.  
@@ -74,12 +85,13 @@ def scheduler(courses):
 				place = place + 1
 			else: 
 				order = order + rows
+	return order
 				
 			
 def date_func(date1, date2):
 	# checks dates to see if they are an acceptable amount together to override end date.
-	date_a = dparser.parse(date1, fuzzy = true) 				
-	date_b = dparser.parse(date2, fuzzy = true)
+	date_a = parse(date1, fuzzy) 				
+	date_b = parse(date2, fuzzy)
 	if(date_b.month - date_a.month > 2):
 		return True
 	if(date_b.day - date_a.month > 5):
