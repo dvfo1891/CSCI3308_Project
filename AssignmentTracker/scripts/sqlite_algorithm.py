@@ -5,12 +5,14 @@ from sqlite_call import *
 from json import *
 import datetime
 import parser
-
+# start of the algorithm 
 def algorithm(user_id):
 	# waiting on sqlite_call to work. Can't test otherwise
 	conn = sqlite3.connect('../db.sqlite3')
 	c = conn.cursor()
+	# does what the code below does but doesn't break everything
 	c.execute( 'select assignment, difficulty, end from tables_assignments where course_id in ( select course_id from tables_course where username_id=%d )' % (user_id))
+	# old code: here to explain what happens above
 	#c.execute('SELECT * FROM tables_course WHERE username_id=?', user_id)
 	#user_courses = c.fetchall()
 	#conn.close()
@@ -29,7 +31,9 @@ def algorithm(user_id):
 	#c.execute(query)
 	r = c.fetchall()
 	conn.close()
+	# run the scheduler
 	finished_plan = scheduler(r)
+	# return json readable file 
 	return(JSONEncoder().encode(finished_plan))
 def scheduler(courses):
 	order = 0
