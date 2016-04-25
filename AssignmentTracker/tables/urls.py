@@ -1,9 +1,13 @@
 from django.conf.urls import url
+from django.contrib.auth.forms import UserCreationForm
+from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
+from django.views.generic import CreateView
 from . import views
 
 urlpatterns = [
     url(r'^$', views.test_main, name='test_main'),
-    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^signup/$',(CreateView.as_view(model = User, get_success_url = lambda: reverse('dashboard'), form_class =UserCreationForm, template_name="tables/signups.html")), name='signup'),
     url(r'^search/$', views.search, name='search'),
     url(r'^notif/$', views.notif, name='notif'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
