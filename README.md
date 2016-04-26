@@ -7,7 +7,7 @@ D'Vreaux Fontaine,
 Ben Droste, 
 Gengyu Liu
 
-Title: <em>Online Homework Tracker</em>
+Title: <em>Assignment Tracker</em>
 
 Description: This software will help college students centeralize all online homework in one convient place.
 The user will be able to indicate which website they wish the program to check and the program will go out and 
