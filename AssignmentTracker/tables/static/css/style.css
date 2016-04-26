@@ -204,3 +204,13 @@ footer a {
 footer a:first {
   padding: 0;
 }
+
+.notif li, .assign li{
+  width: 80%;
+  list-style-type: none;
+  border-radius: 10px;
+  background-color: #eeeeee;
+  padding: 10px;
+  margin-bottom: 5px; 
+}
+

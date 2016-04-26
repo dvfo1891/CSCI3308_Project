@@ -1,5 +1,5 @@
 from django.forms import *
-from .models import Course
+from .models import Course, Assignments
 from django.contrib.auth.models import User
 
 class SignUpForm(ModelForm):
@@ -7,3 +7,7 @@ class SignUpForm(ModelForm):
 		model = User
 		fields = ['username', 'password']
 	
+class PostForm(ModelForm):
+    class Meta:
+        model = Assignments
+        fields = ('assignment', 'start', 'end', 'difficulty')

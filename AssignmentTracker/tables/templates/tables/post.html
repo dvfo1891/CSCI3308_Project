@@ -1,0 +1,12 @@
+{% extends 'tables/base.html' %}
+
+{% block content %}
+
+<h3>Post Assignment</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+{% endblock %}

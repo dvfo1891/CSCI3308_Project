@@ -2,14 +2,15 @@
 
 {% block content %}
 <section>
-<p>Notifications go here, need to create the corresponding model Notif.</p>
-<ul>
-    <caption>Notif attributes:</caption>
-    <li>ForeignKey: points to User</li>
-    <li>CharField: Title</li>
-    <li>CharField: Text</li>
-    <li>DateTimeField: Time</li>
-    <li>...</li>
+<h3>Notifications</h3>
+<ul class="notif">
+    {% for notif in notifications %}
+        <li class="notif">
+            <p>From: {{ notif.user_from }}</p>
+            <h4>{{ notif.title }}</h4>
+            <p>{{ notif.text }}</p>
+        </li>
+    {% endfor %}
 </ul>
 
 </section>

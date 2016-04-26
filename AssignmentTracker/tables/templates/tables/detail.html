@@ -10,12 +10,18 @@
 <hr />
 
 {% if user.is_authenticated %}
-    <a href="">Post new assignment</a>
+    <a href="{% url 'post' course.pk %}">Post new assignment</a>
 {% endif %}
+<br />
+<br />
 
 {% for assign in course.assignments_set.all %}
-    <h4>{{ assign }}</h4>
-    <p>Due on: {{ assign.end }}</p>
+    <ul class="assign">
+        <li>
+            <h4>{{ assign }}</h4>
+            <p>Due on: {{ assign.end }}</p>
+        </li>
+    </ul>
 {% endfor %}
 
 

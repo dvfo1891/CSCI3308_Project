@@ -58,7 +58,8 @@ def enroll_confirm(request, course_pk):
 
 @login_required
 def notif(request):
-    return render(request, 'tables/notif.html')
+    notifications = request.user.user_to.all()
+    return render(request, 'tables/notif.html', {'notifications': notifications})
 
 @login_required
 def dashboard(request):
@@ -80,3 +81,17 @@ def profile(request):
 def detail(request, course_pk):
     course = get_object_or_404(Course, pk=course_pk)
     return render(request, 'tables/detail.html', {'course': course})
+
+@login_required
+def post(request, course_pk):
+    course = get_object_or_404(Course, pk=course_pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.course = course
+            post.save()
+            return redirect('detail', course_pk)
+    else:
+        form = PostForm()
+    return render(request, 'tables/post.html', {'course': course, 'form': form})
