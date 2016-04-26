@@ -11,18 +11,20 @@ urlpatterns = [
         model = User, get_success_url = lambda: reverse('dashboard'), 
         form_class =UserCreationForm, 
         template_name="tables/signup.html")), name='signup'),
-    url(r'^search/$', views.search, name='search'),
     url(r'^notif/$', views.notif, name='notif'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    # about.
     url(r'^about/$', views.about, name='about'),
     url(r'^help/$', views.helpcenter, name='help'),
     url(r'^contact/$', views.contact, name='contact'),
     # add class.
     url(r'^search/$', views.search, name='search'),
-    url(r'^enroll/(?P<course_pk>[0-9]+)/$', views.enroll, name="enroll"),
-    url(r'^enroll/(?P<course_pk>[0-9]+)/confirm/$', views.enroll_confirm, name="enroll_confirm"),
+    url(r'^enroll/(?P<course_pk>[0-9]+)/$', views.enroll, name='enroll'),
+    url(r'^enroll/(?P<course_pk>[0-9]+)/confirm/$', views.enroll_confirm, name='enroll_confirm'),
     # account.
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^accounts/profile/$', views.profile, name='profile'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
+    # course details.
+    url(r'^detail/(?P<course_pk>[0-9]+)/$', views.detail, name='detail'),
 ]
