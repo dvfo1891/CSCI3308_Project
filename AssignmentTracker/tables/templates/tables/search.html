@@ -1,11 +1,12 @@
 {% extends 'tables/base.html' %}
 
 {% block content %}
-<h2>Search page</h2>
+<h2>Search Results</h2>
 {% for course in courses %}
-    <div>
-        <h3>{{ course.course }}</h3>
-        <a href="{{ course.url }}">{{ course.url }}</a>
+    <div class="search-result clearfix">
+        <h3 style="display: inline; font-size: 16px;">{{ course.course }}</h3>
+        <a href="{% url 'enroll' course_pk=course.pk %}" style="color: #884444">Enroll this course</a>
+        <hr style="margin: 0;"/>
     </div>
 {% endfor %}
 

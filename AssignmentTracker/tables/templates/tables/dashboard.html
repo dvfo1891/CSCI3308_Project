@@ -2,23 +2,27 @@
 
 {% block content %}
 <aside>
-  <a>Dashboard</a>
-  <hr>
-  <ul>
-    <caption>Courses</caption>
-    {% for course in user.course_set.all %}
-        <li>{{ course.course }}</li>
-    {% endfor %}
-  </ul>
-	<a href = "{% url 'add_course' %}">Add Course</a>
-  <hr>
-  <ul>
-    <caption>Due Soon</caption>
-    <li>class 1 due on Friday</li>
-    <li>class 2 due on Monday</li>
-  </ul>
+
+    <a>Dashboard</a>
+    <hr>
+    <ul>
+        <caption>Courses</caption>
+        {% for course in user.course_set.all %}
+        <li><a href="{% url 'detail' course.pk %}">{{ course.course }}</a></li>
+        {% endfor %}
+        <a href = "{% url 'add_course' %}">Add Course</a>
+    </ul>
+    <hr>
+    <ul>
+        <caption>Due Soon</caption>
+        <li>class 1 due on Friday</li>
+        <li>class 2 due on Monday</li>
+    </ul>
 </aside>
 <section class="dashboard">
+    {% for course in user.course_set.all %}
+        <p>{{ course.assignments_set.all }}</p>
+    {% endfor %}
 </section>
 
 {% endblock %}

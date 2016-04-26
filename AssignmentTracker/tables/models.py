@@ -5,11 +5,11 @@ from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Course(models.Model):
-    username = models.ForeignKey('auth.User')
-    course = models.CharField(max_length=64)
+    users = models.ManyToManyField('auth.User')
+    course = models.CharField(max_length=128)
     difficulty = models.IntegerField(default=1,
         validators=[MinValueValidator(1), MaxValueValidator(5)])
-    url = models.URLField(max_length=256)
+    url = models.URLField(max_length=512)
 
     def __str__(self):
         return self.course

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -53,6 +53,17 @@ def search(request):
     return render(request, 'tables/search.html', {'courses': courses})
 
 @login_required
+def enroll(request, course_pk):
+    return render(request, 'tables/enroll.html', {'course': course_pk})
+
+@login_required
+def enroll_confirm(request, course_pk):
+    course = Course.objects.get(pk=course_pk)
+    request.user.course_set.add(course)
+    course.users.add(request.user)
+    return redirect(reverse('dashboard'))
+
+@login_required
 def notif(request):
     return render(request, 'tables/notif.html')
 
@@ -72,3 +83,7 @@ def contact(request):
 @login_required
 def profile(request):
     return render(request, 'tables/profile.html')
+
+def detail(request, course_pk):
+    course = get_object_or_404(Course, pk=course_pk)
+    return render(request, 'tables/detail.html', {'course': course})
