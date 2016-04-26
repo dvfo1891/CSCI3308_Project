@@ -100,3 +100,16 @@ def post(request, course_pk):
     else:
         form = PostForm()
     return render(request, 'tables/post.html', {'course': course, 'form': form})
+
+def post_edit(request, assign_pk):
+    assign = get_object_or_404(Assignments, pk=assign_pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=assign)
+        if form.is_valid():
+            post = form.save(commit=False)
+            #post.course = course
+            post.save()
+            return redirect('detail', assign.course.pk)
+    else:
+        form = PostForm(instance=assign)
+    return render(request, 'tables/post.html', {'form': form})

@@ -18,8 +18,9 @@
 {% for assign in course.assignments_set.all %}
     <ul class="assign">
         <li>
-            <h4>{{ assign }}</h4>
-            <p>Due on: {{ assign.end }}</p>
+            <a href="{% url 'post_edit' assign.pk %}" style="float: right;"><span class="glyphicon glyphicon-edit"></span></a>
+            <p><span class="due">Due on: {{ assign.end }}</span> Difficulty: {{ assign.difficulty }}</p>
+            <p>{{ assign.assignment }}</p>
         </li>
     </ul>
 {% endfor %}

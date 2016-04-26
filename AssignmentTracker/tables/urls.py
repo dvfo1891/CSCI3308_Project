@@ -29,4 +29,5 @@ urlpatterns = [
     # course details.
     url(r'^detail/(?P<course_pk>[0-9]+)/$', views.detail, name='detail'),
     url(r'^post/(?P<course_pk>[0-9]+)/$', views.post, name='post'),
+    url(r'^post/(?P<assign_pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
 ]
