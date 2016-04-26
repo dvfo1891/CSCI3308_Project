@@ -5,7 +5,7 @@ from sqlite_call import *
 from json import *
 import datetime
 import parser
-# start of the algorithm 
+# start of the algorithm. Takes tables and returns final JSON readable courselist 
 def algorithm(user_id):
 	# waiting on sqlite_call to work. Can't test otherwise
 	conn = sqlite3.connect('../db.sqlite3')
