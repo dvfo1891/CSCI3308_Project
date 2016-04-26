@@ -74,6 +74,19 @@ header h1{
   padding: 13px 0 0 15px;
 }
 
+section.dashboard ul {
+  list-style-type: none;
+  padding: 0;
+}
+section.dashboard li {
+  margin: 5px;
+  border-bottom: 1px dashed #888888;
+  padding: 5px 5px 10px 5px;
+  width: 98%;
+  display: inline-block;
+  float: left;
+}
+
 header ul.nav {
   height: inherit;
   float: right;
@@ -116,7 +129,7 @@ aside {
   padding: 20px;
   border: 2px solid #eeeeee;
   border-radius: 10px;
-  width: 220px;
+  width: 25%;
   float: left;
 }
 
@@ -130,9 +143,11 @@ aside li {
 
 section.dashboard {
   float: right;
-  background-color: #dddddd;
-  width: 900px;
-  height: 1000px;
+  border: 1px solid #eeeeee;
+  width: 73%;
+  min-height: 500px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 #main {

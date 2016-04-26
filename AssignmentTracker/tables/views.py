@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from itertools import chain
+from django.utils import timezone
 
 # Create your views here.
 def test_main(request):
@@ -63,7 +64,11 @@ def notif(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'tables/dashboard.html')
+    user = request.user
+    courses = user.course_set.all()
+    current_assigns = [assign for course in courses
+                    for assign in course.assignments_set.filter(end__gte=timezone.now())]
+    return render(request, 'tables/dashboard.html', {'current_assigns': current_assigns})
 
 def about(request):
     return render(request, 'tables/about.html')

@@ -20,9 +20,15 @@
     </ul>
 </aside>
 <section class="dashboard">
-    {% for course in user.course_set.all %}
-        <p>{{ course.assignments_set.all }}</p>
+    <ul>
+    {% for assign in current_assigns %}
+            <li>
+                <b>{{ assign.course }}</b><br />
+                {{ assign.assignment | linebreaks }}<br />
+                <span style="color: #886666;">Due: {{ assign.end }}</span>
+            </li>
     {% endfor %}
+    </ul>
 </section>
 
 {% endblock %}
