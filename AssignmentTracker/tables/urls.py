@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^enroll/(?P<course_pk>[0-9]+)/$', views.enroll, name='enroll'),
     url(r'^enroll/(?P<course_pk>[0-9]+)/confirm/$', views.enroll_confirm, name='enroll_confirm'),
+    url(r'^drop/(?P<course_pk>[0-9]+)/$', views.drop, name='drop'),
     # account.
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^accounts/profile/$', views.profile, name='profile'),

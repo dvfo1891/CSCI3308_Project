@@ -57,6 +57,12 @@ def enroll_confirm(request, course_pk):
     course.users.add(request.user)
     return redirect(reverse('dashboard'))
 
+def drop(request, course_pk):
+    course = get_object_or_404(Course, pk=course_pk)
+    request.user.course_set.remove(course)
+    course.users.remove(request.user)
+    return redirect(reverse('dashboard')) 
+
 @login_required
 def notif(request):
     notifications = request.user.user_to.all()
