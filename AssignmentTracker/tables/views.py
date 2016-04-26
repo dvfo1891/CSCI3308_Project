@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .models import Course, Assignments
-from .forms import SignUpForm
+from .forms import *
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -18,7 +18,7 @@ def test_main(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = SignUpForm( request.POST)
         if User.objects.filter(username=request.POST['username']).exists():
             return render(request, 'tables/signups_error.html', {'form' : form})
         else:
@@ -31,6 +31,17 @@ def signup(request):
         form = SignUpForm()
         return render(request, 'tables/signup.html', {'form' : form})
 
+def add_course(request):
+	if request.method == 'POST':
+		form = AddCourseForm(request.POST)
+		course = form.save(commit = False)
+		course.username = request.user
+		course.save()
+		return redirect(reverse('dashboard'))
+	else:
+		form = AddCourseForm()
+		return render(request, 'tables/add_course.html', {'form' : form})
+	
 
 def search(request):
     keyword = request.GET['keyword']

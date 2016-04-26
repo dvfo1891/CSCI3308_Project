@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^search/$', views.search, name='search'),
     url(r'^notif/$', views.notif, name='notif'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    url(r'^add_course/$', views.add_course, name='add_course'),
     url(r'^about/$', views.about, name='about'),
     url(r'^help/$', views.helpcenter, name='help'),
     url(r'^contact/$', views.contact, name='contact'),
