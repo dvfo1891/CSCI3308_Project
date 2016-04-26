@@ -7,8 +7,3 @@ class SignUpForm(ModelForm):
 		model = User
 		fields = ['username', 'password']
 	
-
-class AddCourseForm(ModelForm):
-	class Meta:
-		model = Course
-		fields = ['course', 'difficulty']

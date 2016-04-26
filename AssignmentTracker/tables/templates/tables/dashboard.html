@@ -10,8 +10,8 @@
         {% for course in user.course_set.all %}
         <li><a href="{% url 'detail' course.pk %}">{{ course.course }}</a></li>
         {% endfor %}
-        <a href = "{% url 'add_course' %}">Add Course</a>
     </ul>
+    <a href = "{% url 'add_course' %}">Add Course</a>
     <hr>
     <ul>
         <caption>Due Soon</caption>

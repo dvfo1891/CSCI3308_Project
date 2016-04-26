@@ -32,15 +32,8 @@ def signup(request):
         return render(request, 'tables/signup.html', {'form' : form})
 
 def add_course(request):
-	if request.method == 'POST':
-		form = AddCourseForm(request.POST)
-		course = form.save(commit = False)
-		course.username = request.user
-		course.save()
-		return redirect(reverse('dashboard'))
-	else:
-		form = AddCourseForm()
-		return render(request, 'tables/add_course.html', {'form' : form})
+	courses = Course.objects.all().order_by('course')
+	return render(request, 'tables/search.html', {'courses': courses})
 	
 
 def search(request):
