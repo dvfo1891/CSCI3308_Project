@@ -11,7 +11,7 @@ def algorithm(user_id):
 	conn = sqlite3.connect('../db.sqlite3')
 	c = conn.cursor()
 	# does what the code below does but doesn't break everything
-	c.execute( 'select assignment, difficulty, end from tables_assignments where course_id in ( select course_id from tables_course where username_id=%d )' % (user_id))
+	c.execute( 'select assignment, difficulty, end from tables_assignments where course_id in ( select course_id from tables_course_users where user_id=%d ) order by end, difficulty' % (user_id))
 	# old code: here to explain what happens above
 	#c.execute('SELECT * FROM tables_course WHERE username_id=?', user_id)
 	#user_courses = c.fetchall()
@@ -46,14 +46,14 @@ def scheduler(courses):
 		# Projects take priority over all other assignments, followed by papers
 		# Will overwrite end date base don assignment up to a point.  
 		else:
-			if('project' in rows[0]):
+			if('project' in rows[0].lower()):
 				temp =0
 				added = False
 				for objects in order:
 					if(added):
 						temp = temp + objects
 					else:
-						if 'project' in objects[0]:
+						if 'project' in objects[0].lower():
 							temp = temp + objects
 						else:
 							if(objects[1] > rows[1]):
@@ -64,16 +64,16 @@ def scheduler(courses):
 									added = True
 				order = temp
 				place = place +1
-			elif('paper' in rows[0]):
+			elif('paper' in rows[0].lower()):
 				temp =0
 				added = False
 				for objects in order:
 					if(added):
 						temp = temp + objects
 					else:
-						if 'project' in objects[0]:
+						if 'project' in objects[0].lower():
 							temp = temp + objects
-						elif 'paper' in objects[0]:
+						elif 'paper' in objects[0].lower():
 							temp = temp + objects
 						else:
 							if(objects[1] > rows[1]):
