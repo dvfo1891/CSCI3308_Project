@@ -6,6 +6,7 @@
 {% if user.is_authenticated %}
     <a href="{% url 'drop' course.pk %}" style="float: right;">Drop from this course</a>
 {% endif %}
+
 <a href="{{ course.url }}">{{ course.url }}</a>
 <hr />
 
